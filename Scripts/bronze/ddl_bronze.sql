@@ -13,10 +13,10 @@ IF OBJECT_ID('bronze.transaksi','U') IS NOT NULL
 
 GO
 CREATE TABLE bronze.transaksi(
-transaction_id INT,
+transaction_id NVARCHAR(50),
 account_no NVARCHAR(50),
 tgl_transaksi DATE,
-amount INT,
+amount DECIMAL(18,2),
 channel NVARCHAR(50),
 branch_code NVARCHAR(50),
 )
