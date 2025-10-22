@@ -37,11 +37,12 @@ CREATE OR ALTER PROCEDURE bronze.load_bronze AS
 			Print '>> Inserting Data Into :bronze.transaksi'
 			BULK INSERT bronze.transaksi
 			FROM 'C:\Users\HP\Downloads\datasets\transaksi.csv'
-			WITH (
+			 WITH (
 			FIRSTROW =2,
-			FIELDTERMINATOR=',',
+			  FIELDTERMINATOR=',',
+			 ROWTERMINATOR = '\n',
 			TABLOCK
-			)
+			) 
 			SET @end_time =GETDATE();
 			Print '>> Loading Duration : ' + CAST(DATEDIFF(SECOND,@start_time,@end_time)AS VARCHAR ) + 'seconds'
 			Print '>> -------------------------------------------- <<';
@@ -61,7 +62,3 @@ CREATE OR ALTER PROCEDURE bronze.load_bronze AS
 			END CATCH
 		END
 	
-
-
-
-
